@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using task1.Models;
 using System.Threading.Tasks;
+using System;
 
 namespace WebAPIApp.Controllers
 {
@@ -42,9 +43,23 @@ namespace WebAPIApp.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Country>> Get(int id)
         {
-            Country country = await db.Countriess.FirstOrDefaultAsync(x => x.Id == id);
+            Country country = await db.Countriess.FirstOrDefaultAsync(x => x.Id ==id);
             if (country == null)
+            {
                 return NotFound();
+            }
+            return new ObjectResult(country);
+        }
+
+        [HttpGet]
+        [Route("names/{name}")]
+        public async Task<ActionResult<Country>> Get(string name)
+        {
+            Country country = await db.Countriess.FirstOrDefaultAsync(x => x.Name==name);
+            if (country == null)
+            {
+                return NotFound();
+            }
             return new ObjectResult(country);
         }
 
