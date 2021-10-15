@@ -39,7 +39,7 @@ namespace WebAPIApp.Controllers
             return await db.Countriess.ToListAsync();
         }
 
-        // GET api/users/5
+        // GET api/WebApi/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Country>> Get(int id)
         {
@@ -50,7 +50,7 @@ namespace WebAPIApp.Controllers
             }
             return new ObjectResult(country);
         }
-
+        // GET api/WebApi/names/name
         [HttpGet]
         [Route("names/{name}")]
         public async Task<ActionResult<Country>> Get(string name)
@@ -63,7 +63,7 @@ namespace WebAPIApp.Controllers
             return new ObjectResult(country);
         }
 
-        // POST api/users
+        // POST api/WebApi
         [HttpPost]
         public async Task<ActionResult<Country>> Post(Country country)
         {
@@ -77,7 +77,7 @@ namespace WebAPIApp.Controllers
             return Ok(country);
         }
 
-        // PUT api/users/
+        // PUT api/WebApi/
         [HttpPut]
         public async Task<ActionResult<Country>> Put(Country country)
         {
@@ -95,7 +95,7 @@ namespace WebAPIApp.Controllers
             return Ok(country);
         }
 
-        // DELETE api/users/5
+        // DELETE api/WebApi/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<Country>> Delete(int id)
         {
